@@ -34,22 +34,28 @@ public class CariGambarActivity extends AppCompatActivity {
         mImageUrl = findViewById(R.id.edtUrlGambar);
         mLoadImage = findViewById(R.id.btnKlikUrl);
         mImage = findViewById(R.id.gbrUrl);
+
+        //mengaktifkan klik tombol untuk mencari gambar
         mLoadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //menjalankan method load()
                 load(); 
             }
         });
-
     }
 
+    //method untuk menginisiasi gambar menggunakan AsyncTask
     private void load() {
         String URLGambar = mImageUrl.getText().toString();
         new LoadImage().execute(URLGambar);
     }
 
+    //class AsyncTask
     private class LoadImage extends AsyncTask<String, Integer, Bitmap>{
 
+        //method yang dilakukan sebelum eksekusi untuk menampilkan progress bar ketika meload gambar
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -60,6 +66,7 @@ public class CariGambarActivity extends AppCompatActivity {
             mDialogLoad.show();
         }
 
+        //method pada saat eksekusi untuk mencari gambar berdasarkan url yang dimasukkan
         @Override
         protected Bitmap doInBackground(String... params) {
             Bitmap bitmap = null;
@@ -74,19 +81,7 @@ public class CariGambarActivity extends AppCompatActivity {
             return bitmap;
         }
 
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-            try {
-                Thread.sleep(1000);
-                mDialogLoad.setMessage("Fetching...");
-                mDialogLoad.incrementProgressBy(values[0]);
-                mDialogLoad.setProgress(values[0]);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
+        //method yang dilakukan setelah eksekusi untuk memasukkan gambar bitmap ke dalam ImageView pada layout
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);

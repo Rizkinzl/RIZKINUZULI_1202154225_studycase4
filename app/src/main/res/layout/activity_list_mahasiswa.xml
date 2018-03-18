@@ -16,6 +16,7 @@
         android:text="List Nama Mahasiswa"/>
 
     <Button
+        android:id="@+id/btnMulai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -25,6 +26,7 @@
         android:textAllCaps="false"/>
 
     <ListView
+        android:id="@+id/lvwListNama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"

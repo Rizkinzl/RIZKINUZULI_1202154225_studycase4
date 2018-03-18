@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Deklarasi variabel
     Button btnCariGambar;
     Button btnListMahasiswa;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         btnCariGambar = findViewById(R.id.btnCariGambar);
         btnListMahasiswa = findViewById(R.id.btnListMahasiswa);
 
+        //mengaktifkan klik tombol untuk berpindah kelas ke CariGambarActivity
         btnCariGambar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //mengaktifkan klik tombol untuk berpindah kelas ke ListMahasiswaActivity
         btnListMahasiswa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
